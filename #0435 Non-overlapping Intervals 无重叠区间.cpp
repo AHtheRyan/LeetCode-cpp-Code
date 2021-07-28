@@ -2,14 +2,14 @@
     the shorter the interval is, the less space it will take, so here we sort the intervals on their right value,
     and then compare each left value of a interval with the previous right value of interval which needs to be sompared:
     1. if left > right, the intervals are overlapped, so the number of intervals to be deleted + 1
-    2. if left < right, the intervals are not overlapped, so the current intervalcan be set as interval which needs to be compared
+    2. if left < right, the intervals are not overlapped, so the current interval can be set as interval which needs to be compared
 */
 /*
-    Çø¼äÔ½¶Ì£¬Çø¼äËùÕ¼µÄ¿Õ¼äÔ½ÉÙ£¬ÕâÀïÎÒÃÇ¿ÉÒÔÏÈ½«Çø¼ä°´ÕÕÓÒ²àµÄÊıÖµÅÅĞò£¬
-    Ö®ºó½«Ã¿¸öÇø¼äµÄ×ó±ßºÍÉÏÒ»¸öĞèÒª±È½ÏµÄÇø¼äµÄÓÒ±ß±È½Ï£º
-    1. Èç¹û×ó±ß > ÓÒ±ß£¬ËµÃ÷±ØÈ»ÖØºÏ£¬ÔòĞèÒªÉ¾³ıµÄÇø¼äÊıÁ¿ + 1
-    2. Èç¹û×ó±ß < ÓÒ±ß£¬ËµÃ÷²»ÖØºÏ£¬Ôò½«ĞèÒª±È½ÏµÄÇø¼äÉèÖÃÎªµ±Ç°Çø¼ä
-    ·µ»ØĞèÒªÉ¾³ıµÄÇø¼ä×ÜÊı
+    åŒºé—´è¶ŠçŸ­ï¼ŒåŒºé—´æ‰€å çš„ç©ºé—´è¶Šå°‘ï¼Œè¿™é‡Œæˆ‘ä»¬å¯ä»¥å…ˆå°†åŒºé—´æŒ‰ç…§å³ä¾§çš„æ•°å€¼æ’åºï¼Œ
+    ä¹‹åå°†æ¯ä¸ªåŒºé—´çš„å·¦è¾¹å’Œä¸Šä¸€ä¸ªéœ€è¦æ¯”è¾ƒçš„åŒºé—´çš„å³è¾¹æ¯”è¾ƒï¼š
+    1. å¦‚æœå·¦è¾¹ > å³è¾¹ï¼Œè¯´æ˜å¿…ç„¶é‡åˆï¼Œåˆ™éœ€è¦åˆ é™¤çš„åŒºé—´æ•°é‡ + 1
+    2. å¦‚æœå·¦è¾¹ < å³è¾¹ï¼Œè¯´æ˜ä¸é‡åˆï¼Œåˆ™å°†éœ€è¦æ¯”è¾ƒçš„åŒºé—´è®¾ç½®ä¸ºå½“å‰åŒºé—´
+    è¿”å›éœ€è¦åˆ é™¤çš„åŒºé—´æ€»æ•°
 */
 
 int eraseOverlapIntervals(vector<vector<int>>& intervals)
