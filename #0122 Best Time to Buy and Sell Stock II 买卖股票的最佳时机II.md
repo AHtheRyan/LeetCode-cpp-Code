@@ -5,7 +5,7 @@
 > 设计一个算法来计算你所能获取的最大利润。你可以尽可能地完成更多的交易（多次买卖一支股票）。  
 > **注意**：你不能同时参与多笔交易（你必须在再次购买前出售掉之前的股票）。  
 
-> You are given an array `prices` where `prices\[i]` is the price of a given stock on the `ith` day.  
+> You are given an array `prices` where `prices[i]` is the price of a given stock on the `ith` day.  
 > Find the maximum profit you can achieve. You may complete as many transactions as you like (i.e., buy one and sell one share of the stock multiple times).  
 > **Note**: You may not engage in multiple transactions simultaneously (i.e., you must sell the stock before you buy again).  
 
