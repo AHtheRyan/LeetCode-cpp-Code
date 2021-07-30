@@ -61,16 +61,16 @@ we can get the highest profit in this way
 
 ```cpp
 int maxProfit(vector<int>& prices) 
+{
+    int size = prices.size();
+    int profit = 0;
+    int min = prices[0];
+    for(int i = 1; i < size; ++i)
     {
-        int size = prices.size();
-        int profit = 0;
-        int min = prices[0];
-        for(int i = 1; i < size; ++i)
-        {
-            if(prices[i] > min)
-                profit += prices[i] - min;
-            min = prices[i];
-        }
-        return profit;
+        if(prices[i] > min)
+            profit += prices[i] - min;
+        min = prices[i];
     }
+    return profit;
+}
 ```
