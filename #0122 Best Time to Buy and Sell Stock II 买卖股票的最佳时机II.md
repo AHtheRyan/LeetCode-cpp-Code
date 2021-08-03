@@ -19,13 +19,6 @@
 本题引入两个变量，存储每一天持有 (k) 或者不持有 (nk) 股票身上的总额，每天的总额可以根据前一天是否持有和不持有以及今天持有或不持有决定，取较大者，  
 最后不持有股票时身上钱最多的时候就是赚钱最多的时候  
 
-The maximum profit is the sum of prices_max - prices_min in each interval,  
-But the problem that needs to be noted is that each prices_max must be after prices_min appears,  
-This means that we find the difference between prices_min and the temporary prices_max on his right, and can get the result by summing the results each time,  
-We can create two variables to store the total amount of stocks held (k) or not held (nk) each day,  
-The total amount of each day can be determined according to whether it is held or not held the previous day and whether it is held or not held today,  
-In the end, the result is the money you have when you don’t own stocks  
-
 ```cpp
 int maxProfit(vector<int>& prices)
 {
@@ -51,13 +44,6 @@ int maxProfit(vector<int>& prices)
 如果某一天的股票价格比前一天高，那么就视为当天卖出股票，然后视为当天卖出之后又买入股票，  
 这样，即使出现连续股价上升，实质上也就是 第三天 - 第二天 + 第二天 - 第一天 = 第三天 - 第二天，相当于并未违反连续操作的规则，  
 利用此方法递推每日的股票价格即可
-
-According to the problem conditions, we can buy and sell stocks any number of times,  
-so we can store the lower stock price via variable:  
-if current price is lower than previous price, we can store current price and regard as buying, if the next day's price is lower, then we store the lower price,  
-if current prices is higher than previous price, we can sell the stock and buy it the same day,  
-the result is that, even if the stock's price continue grwoing, we can see our operation as 3rd day - 2nd day + 2nd day - 1st day, which dosen't obey the rules,  
-we can get the highest profit in this way
 
 ```cpp
 int maxProfit(vector<int>& prices) 
