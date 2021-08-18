@@ -4,8 +4,8 @@
     add up all the possibilities and we get the result
 */
 /*
-    ÒÔÈı¸öÊı×ÖÎªµ¥Î»·ÖÎö£¬Èç¹ûÈı¸öÊı×ÖÄÜ×é³ÉµÈ²îÊıÁĞ£¬ÄÇÃ´¸ÃÎ»ÖÃµÄµÈ²îÊıÁĞÊıÄ¿¾ÍÊÇÇ°Ò»Î»ÖÃµÄµÈ²îÊıÁĞÊıÄ¿ + 1£¬
-    ×îºó½«ËùÓĞÎ»ÖÃÄÜĞÎ³ÉµÄµÈ²îÊıÁĞÊıÄ¿¼ÓÔÚÒ»Æğ¼´¿É
+    ä»¥ä¸‰ä¸ªæ•°å­—ä¸ºå•ä½åˆ†æï¼Œå¦‚æœä¸‰ä¸ªæ•°å­—èƒ½ç»„æˆç­‰å·®æ•°åˆ—ï¼Œé‚£ä¹ˆè¯¥ä½ç½®çš„ç­‰å·®æ•°åˆ—æ•°ç›®å°±æ˜¯å‰ä¸€ä½ç½®çš„ç­‰å·®æ•°åˆ—æ•°ç›® + 1ï¼Œ
+    æœ€åå°†æ‰€æœ‰ä½ç½®èƒ½å½¢æˆçš„ç­‰å·®æ•°åˆ—æ•°ç›®åŠ åœ¨ä¸€èµ·å³å¯
 */
 
 int numberOfArithmeticSlices(vector<int>& nums)
@@ -16,9 +16,7 @@ int numberOfArithmeticSlices(vector<int>& nums)
     vector<int> dp(size);
     dp[0] = dp[1] = 0;
     for (int i = 2; i < size; ++i)
-    {
         if (nums[i] + nums[i - 2] == 2 * nums[i - 1])
             dp[i] = dp[i - 1] + 1;
-    }
     return accumulate(dp.begin(), dp.end(), 0);
 }
