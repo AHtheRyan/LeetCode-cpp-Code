@@ -1,10 +1,10 @@
 /*
-    ÌâÄ¿±¾Éí²»ÄÑ£¬Ö±½ÓÉèÖÃleft¡¢mid¡¢rightÈý¸öÖ¸Õë£¬ÅÅÐòºó±éÀú¼´¿É
-    ÄÑµãÔÚÓÚ»úÆ÷ÐÔÄÜÓÐÏÞµÄÇé¿öÏÂÈçºÎ½ÚÔ¼¼ÆËãÊ±¼ä£º
-    1. leftÒÆ¶¯µÄ¹ý³ÌÖÐ£¬Èç¹û left+1 ºÍ left ÏÂ±êµÄÊý×ÖÒ»Ñù£¬¿ÉÒÔÖ±½ÓÌø¹ý£¬midÍ¬Àí
-    2. numsleft] + nums[mid] + nums[right]µÄÖµÈç¹û´óÓÚ0£¬ÄÇÃ´¿ÉÒÔÖ» --right£¬Èç¹ûmid == right »òÕßºÍÐ¡ÓÚ0£¬ÔòÖ±½ÓÑ­»·½áÊø
-    3. ÉÏÃæ¹ý³ÌµÄright¿ÉÒÔ±£Áô£¬ÒòÎªÒÆ¶¯ mid Ö¸Õë±ØÈ»Ê¹¸ÃÊý×ÖÔö´ó£¬ËùÒÔÖ»Òª´Ó×îÐ¡¿ÉÄÜµÄ right ¼ÆËã¼´¿É
-    ÕâÑù¾Í¾Í¿ÉÒÔ½ÚÔ¼ÕûÌåµÄÔËÐÐÊ±¼ä
+    é¢˜ç›®æœ¬èº«ä¸éš¾ï¼Œç›´æŽ¥è®¾ç½®leftã€midã€rightä¸‰ä¸ªæŒ‡é’ˆï¼ŒæŽ’åºåŽéåŽ†å³å¯
+    éš¾ç‚¹åœ¨äºŽæœºå™¨æ€§èƒ½æœ‰é™çš„æƒ…å†µä¸‹å¦‚ä½•èŠ‚çº¦è®¡ç®—æ—¶é—´ï¼š
+    1. leftç§»åŠ¨çš„è¿‡ç¨‹ä¸­ï¼Œå¦‚æžœ left+1 å’Œ left ä¸‹æ ‡çš„æ•°å­—ä¸€æ ·ï¼Œå¯ä»¥ç›´æŽ¥è·³è¿‡ï¼ŒmidåŒç†
+    2. numsleft] + nums[mid] + nums[right]çš„å€¼å¦‚æžœå¤§äºŽ0ï¼Œé‚£ä¹ˆå¯ä»¥åª --rightï¼Œå¦‚æžœmid == right æˆ–è€…å’Œå°äºŽ0ï¼Œåˆ™ç›´æŽ¥å¾ªçŽ¯ç»“æŸ
+    3. ä¸Šé¢è¿‡ç¨‹çš„rightå¯ä»¥ä¿ç•™ï¼Œå› ä¸ºç§»åŠ¨ mid æŒ‡é’ˆå¿…ç„¶ä½¿è¯¥æ•°å­—å¢žå¤§ï¼Œæ‰€ä»¥åªè¦ä»Žæœ€å°å¯èƒ½çš„ right è®¡ç®—å³å¯
+    è¿™æ ·å°±å°±å¯ä»¥èŠ‚çº¦æ•´ä½“çš„è¿è¡Œæ—¶é—´
 */
 
 vector<vector<int>> threeSum(vector<int>& nums)
