@@ -22,7 +22,7 @@
 #### I 双指针
 
 题目本身难度不大，重点在于将字符串以 `'.'` 为单位进行分割比较模拟即可  
-因为比较两个字符串，所以采用双指针解决，对于长度不等的字符串，处理方式类似于 [#0002 Add Two Numbers 两数相加](https://github.com/AHtheRyan/LeetCode-cpp-Code/blob/main/%230002%20Add%20Two%20Numbers%20%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A0.md)  
+因为比较两个字符串，所以采用双指针解决，对于长度不等的字符串，处理方式类似于 [#0002 Add Two Numbers 两数相加](./%230002%20Add%20Two%20Numbers%20两数相加.md)  
 
 ```cpp
 int compareVersion(string version1, string version2) 
