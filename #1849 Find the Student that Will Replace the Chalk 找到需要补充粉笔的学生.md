@@ -33,3 +33,26 @@ int chalkReplacer(vector<int>& chalk, int k)
     return -1;
 }
 ```
+
+#### II 前缀和 + 二分查找
+
+本方法本质上还是除k取余法  
+首先求出 `chalk` 数组的前缀和，得到新的 `chalk` 数组，  
+这样，就可以直接利用二分查找得出粉笔总量的下标位置  
+
+```cpp
+int chalkReplacer(vector<int>& chalk, int k) 
+{
+    if(chalk[0] > k)
+        return 0;
+    int size = chalk.size();
+    for(int i = 1; i < size; ++i)
+    {
+        chalk[i] += chalk[i - 1];
+        if(chalk[i] > k)
+            return i;
+    }    
+    int left = k % chalk[size - 1];
+    return upper_bound(chalk.begin(), chalk.end(), left) - chalk.begin();
+}
+```
