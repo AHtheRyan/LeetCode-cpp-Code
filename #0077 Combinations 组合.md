@@ -38,14 +38,14 @@ void backTrack(int n, int k, vector<vector<int>>& ret, vector<int>& cur, int ind
 {
     if(index == k)
     {
-      ret.push_back(cur);
-      return ;
+        ret.push_back(cur);
+        return ;
     }
     for(int i = times; i <= n; ++i)
     {
-      cur[index++] = i;
-      backTrack(n, k, ret, cur, index, i + 1);
-      --index;
+        cur[index++] = i;
+        backTrack(n, k, ret, cur, index, i + 1);
+        --index;
     }
 }
 ```
