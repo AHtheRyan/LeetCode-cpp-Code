@@ -30,7 +30,6 @@ vector<vector<int>> combine(int n, int k)
 {
     vector<vector<int>> ret;
     vector<int> cur(k);
-    int index = 0;
     backTrack(n, k, ret, cur, index, 1);
     return ret;
 }
