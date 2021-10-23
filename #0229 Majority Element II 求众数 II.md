@@ -1,5 +1,5 @@
-### 求众数
-### Majority Element
+### 求众数 II
+### Majority Element II
 
 > 给定一个大小为 n 的整数数组，找出其中所有出现超过 `⌊ n/3 ⌋` 次的元素。
 
