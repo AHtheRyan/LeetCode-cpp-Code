@@ -64,3 +64,47 @@ int trapRainWater(vector<vector<int>>& heightMap)
     return ret;
 }
 ```
+
+#### II 优先队列
+
+同样先考虑最外面一圈，根据木桶效应，内部的积水肯定受最低的一块高度影响，  
+可以先考虑最外圈的最低一块位置，设其为 `h`，其相邻的位置积水最高只能为 `h`，  
+待该位置确定完高度后，将该位置继续看做最低的“墙”，继续缩小范围进行判断即可，  
+由于每次都取当前的最矮的墙考虑，因此可以利用小顶堆进行相关计算过程  
+
+```cpp
+vector<int> direction{-1, 0, 1, 0, -1};
+
+int trapRainWater(vector<vector<int>>& heightMap) 
+{
+    int m = heightMap.size();
+    int n = heightMap[0].size();
+    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> wall;
+    vector<vector<bool>> visited(m, vector<bool> (n, false));
+    for(int i = 0; i < m; ++i)
+        for(int j = 0; j < n; ++j)
+            if(i == 0 || j == 0 || i == m - 1 || j == n - 1)
+            {
+                wall.push({heightMap[i][j], i * n + j});
+                visited[i][j] = true;
+            }
+    int sum = 0;
+    while(!wall.empty())
+    {
+        auto [r, c] = wall.top();
+        wall.pop();
+        for(int k = 0; k < 4; ++k)
+        {
+            int x = c / n + direction[k];
+            int y = c % n + direction[k + 1];
+            if(x < 0 || y < 0 || x >= m || y >= n || visited[x][y])
+                continue;
+            if(heightMap[x][y] < r)
+                sum += r - heightMap[x][y];
+            visited[x][y] = true;
+            wall.push({max(r, heightMap[x][y]), x * n + y});
+        }
+    }
+    return sum;
+}
+```
