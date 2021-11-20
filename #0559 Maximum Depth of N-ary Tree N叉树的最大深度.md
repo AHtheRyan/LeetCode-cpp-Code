@@ -11,7 +11,7 @@
 
 ----------
 
-#### I DFS
+#### I DFS + 递归
 
 利用DFS，针对根节点的每个子节点依次进行深度计算即可  
 本质上和二叉树并没有什么区别
@@ -59,4 +59,33 @@ public:
         return curdep;
     }
 };
+```
+
+#### II BFS + 队列
+
+利用BFS，针对每个子节点进行计算亦可
+与二叉树的基于队列的BFS同理
+
+```cpp
+int maxDepth(Node* root) 
+{
+    if(!root)
+        return 0;
+    queue<Node*> q;
+    int depth = 0;
+    q.push(root);
+    while(!q.empty())
+    {
+        int size = q.size();
+        while(size)
+        {
+            for(auto child : q.front()->children)
+                q.push(child);
+            q.pop();
+            --size;
+        }
+        ++depth;
+    }
+    return depth;
+}
 ```
