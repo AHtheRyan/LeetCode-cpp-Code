@@ -81,3 +81,44 @@ string pushDominoes(string& dominoes)
     return ret;
 }
 ```
+
+#### II 一次遍历
+
+类似方法I，可以用一次遍历的方式  
+此时，记录下连续 `'.'` 串的前后字符，即对 `"A......B"` 子串来说：  
+1. 如果 `A == B`，则中间都是 `'A'`  
+2. 如果 `'A' == 'L'` 且 `'B' == 'R'`，则中间都不变  
+3. 如果 `'A' == 'R'` 且 `'B' == 'L'`，则中间根据两侧的远近确定倒向，可以利用双指针从两侧往中间收拢  
+
+这样可以通过一次遍历处理整个字符串  
+
+```cpp
+string pushDominoes(string dominoes) 
+{
+    int n = dominoes.size();
+    int index = 0;
+    char left = 'L';
+    while(index < n)
+    {
+        int curIndex = index;
+        while(curIndex < n && dominoes[curIndex] == '.')
+            ++curIndex;
+        char right = curIndex < n ? dominoes[curIndex] : 'R';
+        if(left == right)
+            while(index < curIndex)
+                dominoes[index++] = right;
+        else if(left == 'R' && right == 'L')
+        {
+            int end = curIndex - 1;
+            while(index < end)
+            {
+                dominoes[index++] = 'R';
+                dominoes[end--] = 'L';
+            }
+        }
+        left = right;
+        index = curIndex + 1;
+    }
+    return dominoes;
+}
+```
