@@ -37,28 +37,23 @@
 ```cpp
 string countAndSay(int n) 
 {
-    int cnt = 1;
-    string count = "1";
-    while(cnt < n)
+    string ret = "1";
+    int curNum = 1;
+    while(curNum < n)
     {
-        string ret = "";
-        ++cnt;
-        int cur = 1;
-        char c = count[0];
-        for(int i = 1; i < count.size(); ++i)
+        string cur;
+        int left = 0;
+        int right = 0;
+        while(right < ret.size())
         {
-            if(c == count[i])
-                ++cur;
-            else
-            {
-                ret += to_string(cur) + c;
-                cur = 1;
-                c = count[i];
-            }
+            while(right < ret.size() && ret[left] == ret[right])
+                ++right;
+            cur += to_string(right - left) + ret[left];
+            left = right;
         }
-        ret += to_string(cur) + c;
-        count = ret;
+        ret = cur;
+        ++curNum;
     }
-    return count;
+    return ret;
 }
 ```
