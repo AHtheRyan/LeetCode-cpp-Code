@@ -26,7 +26,9 @@
 string convert(string s, int numRows) 
 {
     int size = s.size();
-    vector<string> line(size);
+    if(size == 1 || numRows >= size)
+        return s;
+    vector<string> line(numRows);
     int count = 0;
     int rowMark = 0;
     bool down = false;
