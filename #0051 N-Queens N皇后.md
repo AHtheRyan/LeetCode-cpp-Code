@@ -16,42 +16,51 @@
 可以从棋盘的第一行开始，依次在每一列放入棋子，再判断下面的行的每一列是否可放，  
 采用三个 `vector<bool>` 数组保存状态，分别作为列、左斜对角、右斜对角是否被占用的标记，其中：  
 列：直接用列表示  
-左对角：一共有 2n-1 条，可以以每个点的横纵坐标之和表示来进行区分  
-右对角：一共有 2n-1 条，可以以每个点的横纵坐标只差加总行数减一表示来进行区分  
+左对角：一共有 `2n - 1` 条，可以以每个点的横纵坐标之和表示来进行区分  
+右对角：一共有 `2n - 1` 条，可以以每个点的横纵坐标只差加总行数减一表示来进行区分  
 之后简单对每行的每一列使用回溯即可  
 
 ```cpp
-vector<vector<string>> solveNQueens(int n) 
+class Solution 
 {
-    vector<vector<string>> ret;
-    vector<string> cur(n, string(n, '.'));
-    vector<bool> check_col(n, false);
-    vector<bool> check_ldiag(2 * n - 1, false);
-    vector<bool> check_rdiag(2 * n - 1, false);
-    backTrack(ret, cur, check_col, check_ldiag, check_rdiag, n, 0);
-    return ret;
-}
+private:
+    vector<bool> col;
+    vector<bool> leftDiag;
+    vector<bool> rightDiag;
 
-void backTrack(vector<vector<string>>& ret, vector<string>& cur, vector<bool>& check_col, vector<bool>& check_ldiag, vector<bool>& check_rdiag, int n, int x)
-{
-    if(x == n)
+public:
+    vector<vector<string>> solveNQueens(int n) 
     {
-        ret.push_back(cur);
-        return ;
+        col.resize(n);
+        leftDiag.resize(2 * n - 1);
+        rightDiag.resize(2 * n - 1);
+        vector<vector<string>> ret;
+        vector<string> cur(n, string(n, '.'));
+        backTrack(ret, cur, 0, n);
+        return ret;
     }
-    for(int y = 0; y < n; ++y)
+
+    void backTrack(vector<vector<string>>& ret, vector<string>& cur, int line, int n)
     {
-        if(check_col[y] || check_ldiag[x + y] || check_rdiag[x - y + n - 1])
-            continue ;
-        cur[x][y] = 'Q';
-        check_col[y] = true;
-        check_ldiag[x + y] = true;
-        check_rdiag[x - y + n - 1] = true;
-        backTrack(ret, cur, check_col, check_ldiag, check_rdiag, n, x + 1);
-        cur[x][y] = '.';
-        check_col[y] = false;
-        check_ldiag[x + y] = false;
-        check_rdiag[x - y + n - 1] = false;
+        if(line == n)
+        {
+            ret.push_back(cur);
+            return;
+        }
+        for(int i = 0; i < n; ++i)
+        {
+            if(col[i] || leftDiag[line + i] || rightDiag[i - line + n - 1])
+                continue;
+            col[i] = true;
+            leftDiag[line + i] = true;
+            rightDiag[i - line + n - 1] = true;
+            cur[line][i] = 'Q';
+            backTrack(ret, cur, line + 1, n);
+            cur[line][i] = '.';
+            rightDiag[i - line + n - 1] = false;
+            leftDiag[line + i] = false;
+            col[i] = false;
+        }
     }
-}
+};
 ```
