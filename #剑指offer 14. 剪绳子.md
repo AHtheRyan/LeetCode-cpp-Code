@@ -22,6 +22,13 @@ int cuttingRope(int n)
 
 #### II 数学
 
+根据DP方法的分析可以发现，最后所有的数字被拆分成 `n 个 3 * m 个 2` 的方案  
+因此，可以直接对数字 `n` 做除以 `3` 的运算，取 `3` 的余数进行考虑：
+1. 余数为 `1`，此时结果为 `m 个 3` 乘以 `1 个 1`，结果为 `3m`，显然，如果拆出一个 `3`，变成 `2 * 2 * 3(m - 1)`，则结果会更大  
+2. 余数为 `2`，则此时直接乘到最终结果即可  
+3. 余数为 `0`，则此时为最大结果  
+ 
+数学证明可以参考[相关证明](https://leetcode-cn.com/problems/jian-sheng-zi-lcof/solution/mian-shi-ti-14-i-jian-sheng-zi-tan-xin-si-xiang-by/)  
 
 ```cpp
 int cuttingRope(int n) 
