@@ -6,7 +6,7 @@
 
 #### I 二分查找
 
-见[在排序数组汇总查找元素的第一个和最后一个位置](./%230034%20Find%20First%20and%20Last%20Position%20of%20Element%20in%20Sorted%20Array%20在排序数组中查找元素的第一个和最后一个位置.md)
+见[在排序数组中查找元素的第一个和最后一个位置](./%230034%20Find%20First%20and%20Last%20Position%20of%20Element%20in%20Sorted%20Array%20在排序数组中查找元素的第一个和最后一个位置.md)
 
 ```cpp
 int search(vector<int>& nums, int target) 
