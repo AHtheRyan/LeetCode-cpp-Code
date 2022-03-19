@@ -29,7 +29,7 @@
 #### I 确定有限状态自动机
 
 可由图获得状态转移的全部效果  
-![1647682754(1)](https://user-images.githubusercontent.com/46887748/159115984-1e0b38fa-5c74-4616-95b5-8d5c47cff1bc.png)  
+![自动机图示](https://user-images.githubusercontent.com/46887748/159115984-1e0b38fa-5c74-4616-95b5-8d5c47cff1bc.png)  
 领会精神  
 
 ```cpp
