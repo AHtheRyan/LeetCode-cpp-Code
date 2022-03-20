@@ -12,7 +12,7 @@
 #### I 迭代
 
 二叉搜索树左子树的所有元素都比根节点小，右子树的所有元素都比根节点大  
-因此，可以根据次性质不断寻找大于 `p` 且小于 `q` 的第一个节点并返回
+因此，可以根据此性质不断寻找大于 `p` 且小于 `q` 的第一个节点并返回
 
 ```cpp
 TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) 
