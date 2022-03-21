@@ -17,3 +17,15 @@ int sumNums(int n)
     return sizeof(ret) >> 1;
 }
 ```
+
+#### II 递归
+
+利用表达式 `&&` 的短路效应完成终止递归的过程  
+
+```cpp
+int sumNums(int n) 
+{
+    n && (n += sumNums(n - 1));
+    return n;
+}
+```
