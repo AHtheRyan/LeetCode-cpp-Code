@@ -35,7 +35,6 @@ vector<int> getRow(int rowIndex)
 
 #### II 数学
 
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
 另一种简单的方式是根据数学公式进行递推  
 杨辉三角的公式实际等同于  
 ![CodeCogsEqn](https://user-images.githubusercontent.com/46887748/130482362-0fe12f5f-b3b7-4e82-b54e-e2a3cc5baba7.png)  
