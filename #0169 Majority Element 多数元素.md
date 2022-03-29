@@ -38,3 +38,45 @@ int majorityElement(vector<int>& nums)
     return cur;
 }
 ```
+
+#### II 分治
+
+利用分治法同样可以快速解题  
+由于最小单元为1个数字，则必然众数为单元内的数字，之后，比较较大的单元，如果两个单元众数相同，则返回该数字，否则对两个数组进行比较，返回出现次数较多的数字  
+最后的分治结果必然为众数  
+
+```cpp
+class Solution 
+{
+private:
+    int cmpElements(vector<int>& nums, int left, int right)
+    {
+        if(left == right)
+            return nums[left];
+        int mid = left + (right - left) / 2;
+        int cur1 = cmpElements(nums, left, mid);
+        int cur2 = cmpElements(nums, mid + 1, right);
+        if(cur1 == cur2)
+            return cur1;
+        int cnt1 = majority(nums, left, mid, cur1);
+        int cnt2 = majority(nums, mid + 1, right, cur2);
+        return cnt1 > cnt2 ? cur1 : cur2;
+    }
+
+    int majority(vector<int>& nums, int left, int right, int cur)
+    {
+        int ret = 0;
+        for(int i = left; i <= right; ++i)
+            if(cur == nums[i])
+                ++ret;
+        return ret;
+    }
+
+public:
+    int majorityElement(vector<int>& nums) 
+    {
+        int n = nums.size();
+        return cmpElements(nums, 0, n - 1);
+    }
+};
+```
