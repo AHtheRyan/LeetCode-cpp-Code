@@ -10,7 +10,7 @@
 
 ----------
 
-### I 双指针
+#### I 双指针
 
 换皮排序题，由于只有0, 1, 2 三个数字，我们可以从左到右遍历数组，同时对左右两个端点设置指针  
 1. 如果遍历位置的值为 2，将其与右端点换位，将右端点指针减一  
@@ -62,4 +62,40 @@ void sortColors(vector<int>& nums)
     while(count2--)
         nums[index++] = 2;
 }
+```
+#### III 快排
+
+手写一个快排也可以
+
+```cpp
+class Solution 
+{
+public:
+    void sortColors(vector<int>& nums) 
+    {
+        quicksort(nums, 0, nums.size() - 1);
+    }
+
+    void quicksort(vector<int>& nums, int left, int right)
+    {
+        if(left < right)
+        {
+            int pivot = nums[left];
+            int start = left;
+            int end = right;
+            while(start < end)
+            {
+                while(start < end && nums[end] > pivot)
+                    --end;
+                nums[start] = nums[end];
+                while(start < end && nums[start] <= pivot)
+                    ++start;
+                nums[end] = nums[start];
+            }
+            nums[start] = pivot;
+            quicksort(nums, left, start - 1);
+            quicksort(nums, start + 1, right);
+        }
+    }
+};
 ```
