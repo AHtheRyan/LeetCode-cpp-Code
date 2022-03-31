@@ -37,3 +37,43 @@ public:
     }
 };
 ```
+
+#### II 迭代
+
+利用层序遍历将每次遍历到的节点的左右子节点交换即可  
+
+```cpp
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution 
+{
+public:
+    TreeNode* invertTree(TreeNode* root) 
+    {
+        if(!root)   return nullptr;
+        stack<TreeNode*> stk;
+        stk.push(root);
+        while(!stk.empty())
+        {
+            auto cur = stk.top();
+            stk.pop();
+            auto l = cur->left;
+            auto r = cur->right;
+            cur->left = r;
+            cur->right= l;
+            if(l)   stk.push(l);
+            if(r)   stk.push(r);
+        }
+        return root;
+    }
+};
+```
