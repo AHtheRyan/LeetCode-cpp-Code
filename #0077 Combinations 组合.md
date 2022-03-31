@@ -26,26 +26,32 @@
 以此构建回溯算法即可
 
 ```cpp
-vector<vector<int>> combine(int n, int k) 
+class Solution 
 {
+private:
+    vector<int> cur;
     vector<vector<int>> ret;
-    vector<int> cur(k);
-    backTrack(n, k, ret, cur, 0, 1);
-    return ret;
-}
 
-void backTrack(int n, int k, vector<vector<int>>& ret, vector<int>& cur, int index, int times)
-{
-    if(index == k)
+public:
+    vector<vector<int>> combine(int n, int k) 
     {
-        ret.push_back(cur);
-        return ;
+        backtrack(n, k, 1);
+        return ret;
     }
-    for(int i = times; i <= n; ++i)
+
+    void backtrack(int n, int k, int index)
     {
-        cur[index++] = i;
-        backTrack(n, k, ret, cur, index, i + 1);
-        --index;
+        if(k == 0)
+        {
+            ret.emplace_back(cur);
+            return;
+        }
+        for(int i = index; i <= n; ++i)
+        {
+            cur.emplace_back(i);
+            backtrack(n, k - 1, i + 1);
+            cur.pop_back();
+        }
     }
-}
+};
 ```
