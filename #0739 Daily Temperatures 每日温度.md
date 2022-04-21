@@ -19,7 +19,7 @@ vector<int> dailyTemperatures(vector<int>& temperatures)
     vector<int> ret(n);
     for(int i = n - 1; i >= 0; --i)
     {
-        while(!stk.empty() && temperatures[stk.top()] <= temperatures[i])\
+        while(!stk.empty() && temperatures[stk.top()] <= temperatures[i])
             stk.pop();
         if(stk.empty())
             ret[i] = 0;
