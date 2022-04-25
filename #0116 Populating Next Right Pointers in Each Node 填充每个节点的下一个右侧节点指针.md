@@ -83,5 +83,48 @@ public:
 由于完美二叉树在每一层都是满的，因此其必然每个非叶子结点都有左右子节点，可以根据此性质，按层迭代处理  
 
 ```cpp
+/*
+// Definition for a Node.
+class Node {
+public:
+    int val;
+    Node* left;
+    Node* right;
+    Node* next;
 
+    Node() : val(0), left(NULL), right(NULL), next(NULL) {}
+
+    Node(int _val) : val(_val), left(NULL), right(NULL), next(NULL) {}
+
+    Node(int _val, Node* _left, Node* _right, Node* _next)
+        : val(_val), left(_left), right(_right), next(_next) {}
+};
+*/
+
+class Solution 
+{
+public:
+    Node* connect(Node* root) 
+    {
+        if(!root)
+            return nullptr;
+        Node* leftNode = root;
+        Node* flag = leftNode;
+        while(leftNode->left)
+        {
+            leftNode->left->next = leftNode->right;
+            if(leftNode->next)
+            {
+                leftNode->right->next = leftNode->next->left;
+                leftNode = leftNode->next;
+            }
+            else
+            {
+                leftNode = flag;
+                flag = flag->left;
+            }
+        }
+        return root;
+    }
+};
 ```
