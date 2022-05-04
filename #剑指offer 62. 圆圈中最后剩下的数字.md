@@ -10,7 +10,7 @@
 见[找出游戏的获胜者](./%231823%20Find%20the%20Winner%20of%20the%20Circular%20Game%20找出游戏的获胜者.md)  
 
 ```cpp
-int findTheWinner(int n, int k)
+int lastRemaining(int n, int m)
 {
     queue<int> q;
     for (int i = 1; i <= n; ++i)
@@ -19,7 +19,7 @@ int findTheWinner(int n, int k)
     while (q.size() > 1)
     {
         ++count;
-        if (count == k)
+        if (count == m)
         {
             count = 0;
             q.pop();
@@ -39,11 +39,11 @@ int findTheWinner(int n, int k)
 见[找出游戏的获胜者](./%231823%20Find%20the%20Winner%20of%20the%20Circular%20Game%20找出游戏的获胜者.md)  
 
 ```cpp
-int findTheWinner(int n, int k) 
+int lastRemaining(int n, int m) 
 {
-    int ret = 1;
+    int ret = 0;
     for(int i = 2; i <= n; ++i)
-        ret = (ret + k - 1) % i + 1;
+        ret = (ret + m) % i;
     return ret;
 }
 ```
