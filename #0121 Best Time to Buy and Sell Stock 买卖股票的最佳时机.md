@@ -13,9 +13,9 @@
 
 #### I 动态规划
 
-最大利润为 prices_max - prices_min，但需要注意的问题是，此 max 值必须在 min 值出现之后，  
-这也就意味着我们找到 prices_min 和他右侧的 prices_max 求差即可，  
-本题可以引入两个变量，分别记录 prices 的当前最小值 minp 和当前的利润值 ret，之后遍历数组即可找到最大值更新 minp 和 ret 即可求出最大利润  
+最大利润为 `prices_max - prices_min`，但需要注意的问题是，此 `max` 值必须在 `min` 值出现之后，  
+这也就意味着我们找到 `prices_min` 和他右侧的 `prices_max` 求差即可，  
+本题可以引入两个变量，分别记录 `prices` 的当前最小值 `minp` 和当前的利润值 `ret`，之后遍历数组即可找到最大值更新 `minp` 和 `ret` 即可求出最大利润  
 
 ```cpp
 int maxProfit(vector<int>& prices) 
