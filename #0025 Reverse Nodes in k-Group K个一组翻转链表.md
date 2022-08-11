@@ -68,3 +68,64 @@ ListNode* reverseKGroup(ListNode* head, int k)
     return ret->next;
 }
 ```
+
+#### II 递归
+
+基于 k 个一组进行递归翻转即可，具体递归操作见 [反转链表](./%230206%20Reverse%20Linked%20List%20反转链表.md)
+
+```cpp
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution 
+{
+public:
+    ListNode* reverseKGroup(ListNode* head, int k) 
+    {
+        int cnt = 0;
+        ListNode* tmp = head;
+        while(tmp)
+        {
+            ++cnt;
+            tmp = tmp->next;
+        }
+        int group = cnt / k;
+        ListNode* ret;
+        ListNode* phead = new ListNode;
+        phead->next = head;
+        for(int i = 0; i < group; ++i)
+        {
+            ListNode* nextNode = head;
+            for(int i = 0; i < k; ++i)
+                nextNode = nextNode->next;
+            ListNode* tmp = reverseList(head, 1, k);
+            phead->next = tmp;
+            if(i == 0)
+                ret = tmp;
+            phead = head;
+            head->next = nextNode;
+            head = nextNode;
+        }
+        return ret;
+    }
+    
+    ListNode* reverseList(ListNode* head, int cnt, int k)
+    {
+        if(k == cnt)
+            return head;
+        if(!head->next)
+            return head;
+        ListNode* cur = reverseList(head->next, cnt + 1, k);
+        head->next->next = head;
+        head->next = nullptr;
+        return cur;
+    }
+};
+```
