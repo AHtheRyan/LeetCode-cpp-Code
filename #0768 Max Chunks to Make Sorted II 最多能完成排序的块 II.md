@@ -50,3 +50,31 @@ int maxChunksToSorted(vector<int>& arr)
     return ret;
 }
 ```
+
+#### II 单调栈
+
+在数组中，如果两个单独的数字能够分成两组，则其下标与数字本身的大小关系必然相同，  
+因此，遍历数组时，遇到单调递增的数字，则可以默认其分为不同的组，但如果遇到一个递减的数字，其会对之前确定的分组造成影响，  
+具体表现为：该数字一定在前面遇到的数字的左边，所以会强制分组合并，且合并的分组数量取决于其左边的分组的最小值所在的位置  
+因此，可以使用单调栈，记录单调递增关系，并在遇到递减数字后，对单调栈内的数字进行出栈，模拟组合并的情况  
+
+```cpp
+int maxChunksToSorted(vector<int>& arr) 
+{
+    stack<int> stk;
+    for(auto& num : arr)
+    {
+        if(stk.empty() || num >= stk.top())
+            stk.push(num);
+        else
+        {
+            int t = stk.top();
+            stk.pop();
+            while(!stk.empty() && num < stk.top())
+                stk.pop();
+            stk.push(t);
+        }
+    }
+    return stk.size();
+}
+```
